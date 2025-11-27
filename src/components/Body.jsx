@@ -14,7 +14,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   // * Whenever a state variable updates or changes, react triggers a reconciliation cycle(re-renders the component)
-  console.log("Body rendered");
+  // console.log("Body rendered");
 
   useEffect(() => {
     fetchData();
@@ -27,11 +27,15 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(json);
+    // console.log("response log",json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
     // * optional chaining
     // setListOfRestaurants(json.data.cards[2].data.data.cards);w
-    setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+    setListOfRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurant(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   // * Conditional Rendering
@@ -93,7 +97,7 @@ const Body = () => {
         {/* // * looping through the <RestaurentCard /> components Using Array.map() method */}
 
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
     </div>
