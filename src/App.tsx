@@ -1,5 +1,9 @@
 import Header from './components/Header';
 import Body from './components/Body';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
+import About from './components/About';
+import Contact from './components/Contact';
+import Error from './components/Error';
 
 /* Components of Our Food-Order App
  * Header
@@ -64,7 +68,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <p>
-        Copyright &copy; {currYear}, Made with 💗 by <strong>Navneet</strong>
+        Copyright &copy; {currYear}, Made by <strong>Navneet</strong>
       </p>
     </footer>
   );
@@ -75,9 +79,21 @@ export const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet />
       <Footer />
     </div>
   );
 };
+
+export const appRouter = createBrowserRouter([
+  {
+    path: '/', element: <AppLayout />,
+    children: [
+      { path: '/', element: <Body /> },
+      { path: '/about', element: <About /> },
+      { path: '/contact', element: <Contact /> },
+    ],
+    errorElement: <Error />
+  }
+])
 

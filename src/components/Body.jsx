@@ -29,7 +29,7 @@ const Body = () => {
 
     // console.log("response log",json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
     // * optional chaining
-    // setListOfRestaurants(json.data.cards[2].data.data.cards);w
+    // setListOfRestaurants(json.data.cards[2].data.data.cards);
     setListOfRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
